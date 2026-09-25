@@ -16,6 +16,8 @@ import argparse
 import sys
 from pathlib import Path
 
+__version__ = "1.0.0"
+
 
 def main():
     ap = argparse.ArgumentParser(description="Download videos in best quality (MP4).")
@@ -24,6 +26,7 @@ def main():
                     help="Folder to save into (default: ./downloads)")
     ap.add_argument("--audio-only", action="store_true",
                     help="Download audio only (MP3)")
+    ap.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     args = ap.parse_args()
 
     try:
