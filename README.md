@@ -1,6 +1,6 @@
 # ⬇️ Video Downloader
 
-![version](https://img.shields.io/badge/version-2.0.0-blue)
+![version](https://img.shields.io/badge/version-2.0.1-blue)
 ![python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)
 ![yt-dlp](https://img.shields.io/badge/powered_by-yt--dlp-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
@@ -101,6 +101,8 @@ each site's Terms of Service — download only content you have the right to sav
 
 ## 📄 Version
 
+**v2.0.1** — UI refresh (teal + amber theme, platform chips, "+ Multiple links"
+batch mode, glassmorphism FAQ, "More free downloaders" shortcuts).
 **v2.0.0** — web dashboard: quality picker, live progress, history, MP3 mode,
 Docker + Render deploy configs.
 **v1.0.0** — initial release: best-quality MP4 download, audio-only MP3
