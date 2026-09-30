@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Video Downloader — Free, Fast &amp; High Quality</title>
-<meta name="description" content="Download videos in high quality — free, online, no app, no signup. Paste a link and save it in seconds. MP4 up to 4K and MP3 audio.">
+<title>Video Downloader — Free 4K MP4 &amp; MP3 Downloads</title>
+<meta name="description" content="Download 4K MP4 videos and MP3 audio for free. No signup, no watermark — unlimited downloads. Paste a link and save it in seconds.">
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -24,19 +24,51 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <div class="badge">100% Free &nbsp;•&nbsp; No signup &nbsp;•&nbsp; No app needed</div>
       <h1>Video Downloader</h1>
-      <p class="sub">Download videos in <strong>high quality</strong> — free, online, with no app and no signup.<br>Paste a link and save it in seconds.</p>
+      <p class="sub">Download 4K MP4 videos and MP3 audio for free.<br>No signup, no watermark — unlimited downloads.</p>
 
-      <form id="dl-form" class="dlbar" autocomplete="off">
-        <input id="url-input" type="url" inputmode="url"
-               placeholder="Paste a video link here… (YouTube, Facebook, Instagram, TikTok, X, Vimeo…)"
-               aria-label="Video URL" required>
-        <button type="submit" id="fetch-btn">Download</button>
-      </form>
-      <p class="hint" id="form-hint">MP4 up to 4K where available &nbsp;•&nbsp; MP3 audio &nbsp;•&nbsp; 1000+ sites supported</p>
+      <div class="widget">
+        <form id="dl-form" class="dlbar" autocomplete="off">
+          <input id="url-input" type="text" inputmode="url"
+                 placeholder="Paste video link here"
+                 aria-label="Video URL">
+          <button type="submit" id="fetch-btn">Download</button>
+        </form>
+        <div id="multi-box" class="multi-box hidden">
+          <textarea id="multi-input" rows="4" placeholder="One video link per line…"></textarea>
+          <div class="multi-opts">
+            <label>Quality for all
+              <select id="multi-quality">
+                <option value="best" selected>Best quality</option>
+                <option value="2160">4K (2160p)</option>
+                <option value="1080">1080p</option>
+                <option value="720">720p</option>
+                <option value="480">480p</option>
+                <option value="360">360p</option>
+                <option value="audio">MP3 audio</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <button id="multi-toggle" class="multi-toggle" type="button">+ Multiple links</button>
+      <p class="terms">By submitting, you agree downloads are for personal use only.</p>
 
-      <!-- result card -->
+      <p class="from-label">Download from</p>
+      <div class="chips" id="chips">
+        <button class="chip yt" data-site="YouTube" title="YouTube">▶</button>
+        <button class="chip fb" data-site="Facebook" title="Facebook">f</button>
+        <button class="chip ig" data-site="Instagram" title="Instagram">◉</button>
+        <button class="chip tk" data-site="TikTok" title="TikTok">♪</button>
+        <button class="chip x" data-site="X (Twitter)" title="X (Twitter)">𝕏</button>
+        <button class="chip vm" data-site="Vimeo" title="Vimeo">v</button>
+        <button class="chip dm" data-site="Dailymotion" title="Dailymotion">d</button>
+        <button class="chip sc" data-site="Snapchat" title="Snapchat">👻</button>
+        <button class="chip pin" data-site="Pinterest" title="Pinterest">P</button>
+        <button class="chip rd" data-site="Reddit" title="Reddit">ʁ</button>
+      </div>
+
+      <!-- single-link result card -->
       <div id="result" class="result hidden">
         <div class="result-top">
           <img id="r-thumb" class="r-thumb" alt="" referrerpolicy="no-referrer">
@@ -60,18 +92,9 @@
         </div>
         <p id="r-error" class="r-error hidden"></p>
       </div>
-    </div>
-  </section>
 
-  <!-- SITES -->
-  <section class="sites">
-    <div class="wrap">
-      <p class="sites-label">Works with your favourite sites</p>
-      <div class="sites-row">
-        <span>YouTube</span><span>Facebook</span><span>Instagram</span><span>TikTok</span>
-        <span>X (Twitter)</span><span>Vimeo</span><span>Dailymotion</span><span>Twitch</span>
-        <span class="more">+ 1000 more</span>
-      </div>
+      <!-- multi-link jobs -->
+      <div id="jobs" class="jobs hidden"></div>
     </div>
   </section>
 
@@ -83,7 +106,7 @@
         <div class="card"><div class="ico">🎬</div><h3>True high quality</h3><p>Best video + best audio merged into one MP4 — up to 4K where the site offers it.</p></div>
         <div class="card"><div class="ico">🌍</div><h3>All videos, all sites</h3><p>Not just YouTube — download from 1000+ supported sites with one tool.</p></div>
         <div class="card"><div class="ico">🎧</div><h3>MP3 in one click</h3><p>Extract audio-only MP3 at 192 kbps for music, podcasts and lectures.</p></div>
-        <div class="card"><div class="ico">⚡</div><h3>Fast &amp; simple</h3><p>No app to install, no account to create. Paste → pick quality → save.</p></div>
+        <div class="card"><div class="ico">🔗</div><h3>Multiple links</h3><p>Paste several links at once and download them all in one go.</p></div>
         <div class="card"><div class="ico">📱</div><h3>Works on mobile</h3><p>Fully responsive — download straight from your phone's browser.</p></div>
         <div class="card"><div class="ico">🔒</div><h3>Private by design</h3><p>No personal data asked. Files are removed from the server after you download them.</p></div>
       </div>
@@ -102,6 +125,27 @@
     </div>
   </section>
 
+  <!-- MORE DOWNLOADERS -->
+  <section class="more-dl">
+    <div class="wrap">
+      <h2>More free downloaders</h2>
+      <div class="pills" id="site-pills">
+        <button>YouTube Video Downloader</button>
+        <button>YouTube Shorts Downloader</button>
+        <button>YouTube MP3 Converter</button>
+        <button>Facebook Video Downloader</button>
+        <button>Instagram Video Downloader</button>
+        <button>TikTok Video Downloader</button>
+        <button>Twitter Video Downloader</button>
+        <button>Vimeo Video Downloader</button>
+        <button>Dailymotion Video Downloader</button>
+        <button>Reddit Video Downloader</button>
+        <button>Twitch Clip Downloader</button>
+        <button>Pinterest Video Downloader</button>
+      </div>
+    </div>
+  </section>
+
   <!-- HISTORY -->
   <section class="history-sec">
     <div class="wrap">
@@ -114,9 +158,11 @@
   <section id="faq" class="faq">
     <div class="wrap">
       <h2>Frequently asked questions</h2>
-      <details open><summary>Is this downloader free?</summary><p>Yes — it is completely free, with no signup and no limits for normal use.</p></details>
-      <details><summary>Which sites can I download from?</summary><p>YouTube (videos and Shorts), Facebook, Instagram (reels and videos), TikTok, X, Vimeo and 1000+ more. Just paste any public link.</p></details>
-      <details><summary>What quality and formats can I download?</summary><p>MP4 video up to 4K where available (4K, 1440p, 1080p, 720p, 480p, 360p) and MP3 audio. "Best quality" always picks the highest the site offers.</p></details>
+      <details open><summary>How do I download videos?</summary><p>Copy the video link, paste it in the box above and hit Download. Pick a quality, wait for it to finish, then save the file. That's it.</p></details>
+      <details><summary>Is this downloader free?</summary><p>Yes — it is completely free, with no signup, no watermark and no limits for normal use.</p></details>
+      <details><summary>Which sites can I download from?</summary><p>YouTube (videos and Shorts), Facebook, Instagram (reels and videos), TikTok, X, Vimeo, Dailymotion, Reddit, Twitch, Snapchat, Pinterest and 1000+ more. Just paste any public link.</p></details>
+      <details><summary>What quality and formats can I download?</summary><p>MP4 video up to 4K where available (4K, 1440p, 1080p, 720p, 480p, 360p) and high-quality MP3 audio. "Best quality" always picks the highest the site offers.</p></details>
+      <details><summary>Can I download multiple videos at once?</summary><p>Yes — hit "+ Multiple links", paste one link per line, choose a quality and download them all together.</p></details>
       <details><summary>Can I use it on my phone?</summary><p>Yes — it works in any phone or computer browser, no app needed.</p></details>
       <details><summary>Do I need to install anything or sign up?</summary><p>No. There is nothing to install and no account needed — just paste a link and download.</p></details>
       <details><summary>Is it safe?</summary><p>Yes. We do not ask for any personal information and only work with public videos. Files are removed from our server after they are sent to you.</p></details>
@@ -126,8 +172,8 @@
 
 <footer>
   <div class="wrap foot">
-    <p><strong>⬇️ VideoDownloader</strong> — free online video downloader.</p>
-    <p class="fair">Please respect each site's Terms of Service — download only content you have the right to save.</p>
+    <p class="disclaimer">VideoDownloader does not host any videos. All downloads are for personal use only — please respect each site's Terms of Service and download only content you have the right to save.</p>
+    <p class="copy">© 2026 VideoDownloader · For personal use only</p>
   </div>
 </footer>
 
