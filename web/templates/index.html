@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video Downloader — Free, Fast &amp; High Quality</title>
+<meta name="description" content="Download videos in high quality — free, online, no app, no signup. Paste a link and save it in seconds. MP4 up to 4K and MP3 audio.">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="/">⬇️ <span>VideoDownloader</span></a>
+    <nav class="nav">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="badge">100% Free &nbsp;•&nbsp; No signup &nbsp;•&nbsp; No app needed</div>
+      <h1>Video Downloader</h1>
+      <p class="sub">Download videos in <strong>high quality</strong> — free, online, with no app and no signup.<br>Paste a link and save it in seconds.</p>
+
+      <form id="dl-form" class="dlbar" autocomplete="off">
+        <input id="url-input" type="url" inputmode="url"
+               placeholder="Paste a video link here… (YouTube, Facebook, Instagram, TikTok, X, Vimeo…)"
+               aria-label="Video URL" required>
+        <button type="submit" id="fetch-btn">Download</button>
+      </form>
+      <p class="hint" id="form-hint">MP4 up to 4K where available &nbsp;•&nbsp; MP3 audio &nbsp;•&nbsp; 1000+ sites supported</p>
+
+      <!-- result card -->
+      <div id="result" class="result hidden">
+        <div class="result-top">
+          <img id="r-thumb" class="r-thumb" alt="" referrerpolicy="no-referrer">
+          <div class="r-meta">
+            <div class="r-site" id="r-site"></div>
+            <h2 id="r-title"></h2>
+            <p id="r-sub"></p>
+          </div>
+        </div>
+        <div class="r-qualities">
+          <p class="r-label">Choose quality</p>
+          <div id="q-list" class="q-list"></div>
+        </div>
+        <div id="progress-wrap" class="progress-wrap hidden">
+          <div class="progress-bar"><div id="progress-fill"></div></div>
+          <p id="progress-text" class="progress-text">Starting…</p>
+        </div>
+        <div id="done-wrap" class="done-wrap hidden">
+          <a id="file-link" class="btn-big" href="#" download>⬇️ Download file</a>
+          <p class="done-note">Your file is ready. It will be removed from the server shortly after download.</p>
+        </div>
+        <p id="r-error" class="r-error hidden"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SITES -->
+  <section class="sites">
+    <div class="wrap">
+      <p class="sites-label">Works with your favourite sites</p>
+      <div class="sites-row">
+        <span>YouTube</span><span>Facebook</span><span>Instagram</span><span>TikTok</span>
+        <span>X (Twitter)</span><span>Vimeo</span><span>Dailymotion</span><span>Twitch</span>
+        <span class="more">+ 1000 more</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="features">
+    <div class="wrap">
+      <h2>Why use this downloader?</h2>
+      <div class="cards">
+        <div class="card"><div class="ico">🎬</div><h3>True high quality</h3><p>Best video + best audio merged into one MP4 — up to 4K where the site offers it.</p></div>
+        <div class="card"><div class="ico">🌍</div><h3>All videos, all sites</h3><p>Not just YouTube — download from 1000+ supported sites with one tool.</p></div>
+        <div class="card"><div class="ico">🎧</div><h3>MP3 in one click</h3><p>Extract audio-only MP3 at 192 kbps for music, podcasts and lectures.</p></div>
+        <div class="card"><div class="ico">⚡</div><h3>Fast &amp; simple</h3><p>No app to install, no account to create. Paste → pick quality → save.</p></div>
+        <div class="card"><div class="ico">📱</div><h3>Works on mobile</h3><p>Fully responsive — download straight from your phone's browser.</p></div>
+        <div class="card"><div class="ico">🔒</div><h3>Private by design</h3><p>No personal data asked. Files are removed from the server after you download them.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how" class="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><span class="n">1</span><div><h3>Copy the link</h3><p>Copy the URL of any public video from a supported site.</p></div></li>
+        <li><span class="n">2</span><div><h3>Paste it above</h3><p>Paste the link into the box and hit Download.</p></div></li>
+        <li><span class="n">3</span><div><h3>Pick quality &amp; save</h3><p>Choose MP4 quality or MP3, then save the file to your device.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="history-sec">
+    <div class="wrap">
+      <h2>Recent downloads <span class="small-note">(this session)</span></h2>
+      <ul id="history" class="history"><li class="empty">Nothing downloaded yet.</li></ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <h2>Frequently asked questions</h2>
+      <details open><summary>Is this downloader free?</summary><p>Yes — it is completely free, with no signup and no limits for normal use.</p></details>
+      <details><summary>Which sites can I download from?</summary><p>YouTube (videos and Shorts), Facebook, Instagram (reels and videos), TikTok, X, Vimeo and 1000+ more. Just paste any public link.</p></details>
+      <details><summary>What quality and formats can I download?</summary><p>MP4 video up to 4K where available (4K, 1440p, 1080p, 720p, 480p, 360p) and MP3 audio. "Best quality" always picks the highest the site offers.</p></details>
+      <details><summary>Can I use it on my phone?</summary><p>Yes — it works in any phone or computer browser, no app needed.</p></details>
+      <details><summary>Do I need to install anything or sign up?</summary><p>No. There is nothing to install and no account needed — just paste a link and download.</p></details>
+      <details><summary>Is it safe?</summary><p>Yes. We do not ask for any personal information and only work with public videos. Files are removed from our server after they are sent to you.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p><strong>⬇️ VideoDownloader</strong> — free online video downloader.</p>
+    <p class="fair">Please respect each site's Terms of Service — download only content you have the right to save.</p>
+  </div>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
